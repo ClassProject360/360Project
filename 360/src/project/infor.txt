@@ -1,0 +1,2 @@
+ID 1 name  lastname age  sex address  city state  zipcode phone  email 
+ID 2 name  lastname age  sex address  city state  zipcode phone  email 
