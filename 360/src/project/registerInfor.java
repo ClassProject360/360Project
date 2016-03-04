@@ -13,15 +13,28 @@ import java.nio.file.Paths;
 public class registerInfor {
 	
 	private int id;
+	private String fileName;
 	
+	public registerInfor(){
+		fileName = "src/project/infor.txt";
+	}
+	
+	/**
+	 * To write user information into the txt file after user click submit
+	 * 
+	 * @param name 
+	 * @param lastName
+	 * @param age
+	 * @param sex
+	 * @param address
+	 * @param city
+	 * @param state
+	 * @param zip
+	 * @param phone
+	 * @param email
+	 */
 	public void cusInfor(String name, String lastName, String age, String sex, 
 			String address, String city, String state, String zip, String phone, String email){
-		
-//		System.out.println("name lastname = " + name +" " + lastName + "\n");
-//		System.out.println(" age and sexe = " + age +" " + sex + "\n");
-//		System.out.println("address city = " + address +" " + city + "\n");
-//		System.out.println("state zipcode = " + state +" " + zip + "\n");
-//		System.out.println("phone  email = " + phone +" " + email + "\n");
 		
 		try {
 			if(numofline() == 0){
@@ -34,7 +47,7 @@ public class registerInfor {
 		}
 		
 		// write information to file infor.txt
-		File log = new File("src/project/infor.txt");
+		File log = new File(fileName);
 
 		try{
 		    if(!log.exists()){
@@ -52,7 +65,6 @@ public class registerInfor {
 		    		+ "phone " + phone + " email " + email + "\n");
 		    bufferedWriter.close();
 
-		   // System.out.println("Done");
 		} catch(IOException e) {
 		    System.out.println("COULD NOT OPEN FILE!!");
 		}
@@ -60,8 +72,13 @@ public class registerInfor {
 		
 	}
 	
-	public static int numofline() throws IOException{
-		BufferedInputStream is = new BufferedInputStream(new FileInputStream("src/project/infor.txt"));
+	/**
+	 * To count the number of line so that we can assignt an Id to the user
+	 * @return number of line
+	 * @throws IOException
+	 */
+	public int numofline() throws IOException{
+		BufferedInputStream is = new BufferedInputStream(new FileInputStream(fileName));
 	    try {
 	        byte[] c = new byte[1024];
 	        int count = 0;
@@ -83,23 +100,25 @@ public class registerInfor {
 	    }
 	    
 	}
-	public static String readfromLine(int lineNum){
+	
+	/**
+	 * to read to information of that line number start at line 0 
+	 * @param lineNum
+	 * @return information of customer at that line 
+	 */
+	public String readfromLine(int lineNum){
 		String line = null;
 		try {
 			
-			line = Files.readAllLines(Paths.get("src/project/infor.txt")).get(lineNum);
+			line = Files.readAllLines(Paths.get(fileName)).get(lineNum);
 			System.out.println(line);
 			return line;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return line;
 		
 	}
 	
-//	public static void main(String[] args) {
-//		readfromLine(1);
-//	}
 
 }
