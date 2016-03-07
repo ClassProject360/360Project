@@ -1,7 +1,1 @@
-ID 1 name  lastname age  sex address  city state  zipcode phone  email 
-ID 2 name  lastname age  sex address  city state  zipcode phone  email 
-ID 3 name  lastname age  sex address  city state  zipcode phone  email 
-ID 4 name  lastname age  sex address  city state  zipcode phone  email 
-ID 5 name  lastname age  sex address  city state  zipcode phone  email 
-ID 6 name  lastname age  sex address  city state  zipcode phone  email 
-ID 7 name  lastname age  sex address  city state  zipcode phone  email 
+ID 0 name Walnut lastname Smithage 20 sex Maddress 1234 street  city seattlestate WA zipcode 98198phone 2065551234 email jspade@wilow.com

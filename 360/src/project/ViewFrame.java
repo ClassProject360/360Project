@@ -28,6 +28,7 @@ public class ViewFrame extends JFrame {
 	private JButton about;
 	private JButton faq;
 	private JButton login;
+	private JButton logout;
 
 	// width and height of JFrame
 	private int height = 600;
@@ -60,6 +61,7 @@ public class ViewFrame extends JFrame {
 		about = new JButton("About");
 		faq = new JButton("FAQ");
 		login = new JButton("Log In");
+		logout = new JButton("Log out");
 
 		buttonPanel.add(Box.createVerticalStrut(5));
 		buttonPanel.add(download);
@@ -103,6 +105,15 @@ public class ViewFrame extends JFrame {
 		});
 
 		login.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				getContentPane().removeAll();
+				getContentPane().add(logIn(), BorderLayout.CENTER);
+				getContentPane().add(buttonPanel, BorderLayout.NORTH);
+				printAll(getGraphics());
+			}
+		});
+		
+		logout.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				getContentPane().removeAll();
 				getContentPane().add(logIn(), BorderLayout.CENTER);
@@ -157,7 +168,7 @@ public class ViewFrame extends JFrame {
 	 * @return login panel
 	 */
 	private JPanel logIn() {
-		Login loginPanel = new Login(width, height);
+		Login loginPanel = new Login(width, height, logout);
 		return loginPanel;
 	}
 }

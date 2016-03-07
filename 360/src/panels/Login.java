@@ -30,15 +30,17 @@ public class Login extends JPanel {
 	private String judgePassword = "1234";
 	private int myWidth;
 	private int myHeight;
+	private JButton myLogout;
 	
 	/**
 	 * 
 	 * @param width
 	 * @param height
 	 */
-	public Login(int width, int height) {
+	public Login(int width, int height, JButton logout) {
 		myWidth = width;
 		myHeight = height;
+		myLogout = logout;
 		setBackground(Color.RED);
 		
 		Font font2 = new Font("SansSerif", Font.BOLD, 20);
@@ -94,7 +96,7 @@ public class Login extends JPanel {
 	 * @return judge panel
 	 */
 	private JPanel judge() {
-		Judge judgePanel = new Judge(myWidth, myHeight);
+		Judge judgePanel = new Judge(myWidth, myHeight, myLogout);
 		return judgePanel;
 	}
 }
