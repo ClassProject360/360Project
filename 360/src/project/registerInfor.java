@@ -58,11 +58,11 @@ public class registerInfor {
 		    FileWriter fileWriter = new FileWriter(log, true);
 
 		    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-		    bufferedWriter.write("ID " + id + " name " + name + " lastname " + lastName 
-		    		+ "age " + age + " sex " + sex 
-		    		+ "address " + address + " city " + city 
-		    		+ "state " + state + " zipcode " + zip
-		    		+ "phone " + phone + " email " + email + "\n");
+		    bufferedWriter.write("ID: " + id + "   Name: " + name + " " + lastName 
+		    		+ "   Age: " + age + "   Sex: " + sex 
+		    		+ "   Address: " + address + " " + city 
+		    		+ " " + state + " " + zip
+		    		+ "   Phone: " + phone + "   Email: " + email + "\n");
 		    bufferedWriter.close();
 
 		} catch(IOException e) {
@@ -111,7 +111,7 @@ public class registerInfor {
 		try {
 			
 			line = Files.readAllLines(Paths.get(fileName)).get(lineNum);
-			System.out.println(line);
+			//System.out.println(line);
 			return line;
 		} catch (IOException e) {
 			e.printStackTrace();

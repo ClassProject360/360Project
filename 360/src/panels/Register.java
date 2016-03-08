@@ -181,6 +181,16 @@ public class Register extends JPanel {
 						cityTextField.getText(), stateTextField.getText(),
 						zipTextField.getText(), phoneTextField.getText(),
 						emailTextField.getText());
+				nameTextField.setText("");
+				latNameTextField.setText("");
+				ageTextField.setText("");
+				sexTextField.setText("");
+				addressTextField.setText("");
+				cityTextField.setText("");
+				stateTextField.setText("");
+				zipTextField.setText(""); 
+				phoneTextField.setText("");
+				emailTextField.setText("");
 				// } else {
 				// JOptionPane.showMessageDialog (null, "Please Check Agree",
 				// "Before Move on", JOptionPane.INFORMATION_MESSAGE);

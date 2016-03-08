@@ -18,6 +18,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import project.ViewFrame;
+
 /**
  * 
  *
@@ -38,6 +40,8 @@ public class Login extends JPanel {
 	private int myWidth;
 	private int myHeight;
 	private JButton myLogout;
+	
+	private ViewFrame frame;
 	
 	/**
 	 * 
@@ -70,7 +74,6 @@ public class Login extends JPanel {
 		loginButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(userText.getText() + new String(passwordText.getPassword()));
 				// check the user name and password
 				if(userText.getText().equals(judgeName1)
 						||userText.getText().equals(judgeName2)
@@ -86,6 +89,7 @@ public class Login extends JPanel {
 						&& new String(passwordText.getPassword()).equals(adminPassword)) {
 					// switch to the admin panel
 					removeAll();
+					//frame.getRootPane().removeAll();
 					add(admin(),BorderLayout.CENTER);
 					updateUI();
 				}else {
