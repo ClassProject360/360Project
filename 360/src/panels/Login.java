@@ -8,6 +8,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -23,11 +24,17 @@ import javax.swing.JTextField;
  */
 @SuppressWarnings("serial") //Not implementing serialization suppressing warning.
 public class Login extends JPanel {
+	//Judge username and password
 	private String judgeName1 = "judgeone";
 	private String judgeName2 = "judgetwo";
 	private String judgeName3 = "judgethree";
 	private String judgeName4 = "judgefour";
 	private String judgePassword = "1234";
+	
+	// admin username and password
+	private String admin = "admin";
+	private String adminPassword = "4321";
+	
 	private int myWidth;
 	private int myHeight;
 	private JButton myLogout;
@@ -63,18 +70,25 @@ public class Login extends JPanel {
 		loginButton.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
+				System.out.println(userText.getText() + new String(passwordText.getPassword()));
 				// check the user name and password
 				if(userText.getText().equals(judgeName1)
 						||userText.getText().equals(judgeName2)
 						|| userText.getText().equals(judgeName3) 
 						|| userText.getText().equals(judgeName4) 
-						&& passwordText.getPassword().equals(judgePassword)){
+						&& new String(passwordText.getPassword()).equals(judgePassword)){
 					
 					// switch to the judge panel
 					removeAll();
 					add(judge(),BorderLayout.CENTER);
 					updateUI();
-				} else {
+				} else if (userText.getText().equals(admin) 
+						&& new String(passwordText.getPassword()).equals(adminPassword)) {
+					// switch to the admin panel
+					removeAll();
+					add(admin(),BorderLayout.CENTER);
+					updateUI();
+				}else {
 					JOptionPane.showMessageDialog (null, "Incorrect Username or Password",
 							 "Warnning", JOptionPane.INFORMATION_MESSAGE);
 				}
@@ -98,5 +112,14 @@ public class Login extends JPanel {
 	private JPanel judge() {
 		Judge judgePanel = new Judge(myWidth, myHeight, myLogout);
 		return judgePanel;
+	}
+	
+	/**
+	 * Admin panel that access after pass the login process. 
+	 * @return admin panel
+	 */
+	private JPanel admin() {
+		Admin admin = new Admin(myWidth, myHeight, myLogout);
+		return admin;
 	}
 }

@@ -7,6 +7,7 @@ package project;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -14,6 +15,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import panels.About;
+import panels.Admin;
 import panels.Download;
 import panels.FAQ;
 import panels.Login;
@@ -70,7 +72,7 @@ public class ViewFrame extends JFrame {
 		buttonPanel.add(about);
 		buttonPanel.add(Box.createVerticalStrut(5));
 		buttonPanel.add(login);
-//
+
 		about.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				getContentPane().removeAll();
@@ -171,4 +173,5 @@ public class ViewFrame extends JFrame {
 		Login loginPanel = new Login(width, height, logout);
 		return loginPanel;
 	}
+	
 }
