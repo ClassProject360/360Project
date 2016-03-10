@@ -10,9 +10,14 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.RenderedImage;
+import java.io.File;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -24,12 +29,13 @@ import project.registerInfor;
  * 
  *
  */
-@SuppressWarnings("serial") //Not implementing serialization suppressing warning.
+@SuppressWarnings("serial")
+// Not implementing serialization suppressing warning.
 public class Register extends JPanel {
 	private JPanel infor;
 	private JPanel term;
 	private JPanel submitPanel;
-	
+
 	private JLabel nameLabel;
 	private JLabel latNameLabel;
 	private JLabel ageLabel;
@@ -42,7 +48,8 @@ public class Register extends JPanel {
 	private JLabel emailLabel;
 	private JLabel agreeLabel;
 	private JButton submit;
-	
+	private JButton UploadButton;
+
 	private JTextField nameTextField;
 	private JTextField latNameTextField;
 	private JTextField ageTextField;
@@ -54,7 +61,7 @@ public class Register extends JPanel {
 	private JTextField phoneTextField;
 	private JTextField emailTextField;
 	private JCheckBox agree;
-	
+
 	// connect to registerInfor class to pass customer information
 	private registerInfor passinfor;
 
@@ -137,6 +144,7 @@ public class Register extends JPanel {
 
 		// panel for the term agreement
 		term = new JPanel();
+		term.setPreferredSize(new Dimension(740, 200));
 		JTextArea area = new JTextArea(
 				" Agreement Term ..............................\n"
 						+ "................................................\n"
@@ -146,6 +154,7 @@ public class Register extends JPanel {
 						+ ".................................................",
 				10, 65);
 		area.setEditable(false);
+		area.setPreferredSize(new Dimension(710, 230));
 		JScrollPane areaScrollPane = new JScrollPane(area);
 		areaScrollPane
 				.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -160,62 +169,85 @@ public class Register extends JPanel {
 		submit = new JButton("Submit!!");
 		submit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				// all this comment is to check if user enter all the infor and check agree
 
-				// if(!nameTextField.getText().equals("") &&
-				// !latNameTextField.getText().equals("")
-				// && !ageTextField.getText().equals("") &&
-				// !sexTextField.getText().equals("")
-				// && !addressTextField.getText().equals("") &&
-				// !cityTextField.getText().equals("")
-				// && !stateTextField.getText().equals("") &&
-				// !zipTextField.getText().equals("")
-				// && !phoneTextField.getText().equals("") &&
-				// !emailTextField.getText().equals("")){
-				// if(agree.isSelected()){
-				passinfor = new registerInfor();
-				passinfor.cusInfor(nameTextField.getText(),
-						latNameTextField.getText(), ageTextField.getText(),
-						sexTextField.getText(), addressTextField.getText(),
-						cityTextField.getText(), stateTextField.getText(),
-						zipTextField.getText(), phoneTextField.getText(),
-						emailTextField.getText());
-				nameTextField.setText("");
-				latNameTextField.setText("");
-				ageTextField.setText("");
-				sexTextField.setText("");
-				addressTextField.setText("");
-				cityTextField.setText("");
-				stateTextField.setText("");
-				zipTextField.setText(""); 
-				phoneTextField.setText("");
-				emailTextField.setText("");
-				// } else {
-				// JOptionPane.showMessageDialog (null, "Please Check Agree",
-				// "Before Move on", JOptionPane.INFORMATION_MESSAGE);
-				// }
-				//
-				// } else {
-				// JOptionPane.showMessageDialog (null,
-				// "Please Fill out your information",
-				// "Before Move on", JOptionPane.INFORMATION_MESSAGE);
-				// }
+				// all this comment is to check if user enter all the infor and
+				// check agree
+
+				if (!nameTextField.getText().equals("")
+						&& !latNameTextField.getText().equals("")
+						&& !ageTextField.getText().equals("")
+						&& !sexTextField.getText().equals("")
+						&& !addressTextField.getText().equals("")
+						&& !cityTextField.getText().equals("")
+						&& !stateTextField.getText().equals("")
+						&& !zipTextField.getText().equals("")
+						&& !phoneTextField.getText().equals("")
+						&& !emailTextField.getText().equals("")) {
+					if (agree.isSelected()) {
+						passinfor = new registerInfor();
+						passinfor.cusInfor(nameTextField.getText(),
+								latNameTextField.getText(),
+								ageTextField.getText(), sexTextField.getText(),
+								addressTextField.getText(),
+								cityTextField.getText(),
+								stateTextField.getText(),
+								zipTextField.getText(),
+								phoneTextField.getText(),
+								emailTextField.getText());
+						nameTextField.setText("");
+						latNameTextField.setText("");
+						ageTextField.setText("");
+						sexTextField.setText("");
+						addressTextField.setText("");
+						cityTextField.setText("");
+						stateTextField.setText("");
+						zipTextField.setText("");
+						phoneTextField.setText("");
+						emailTextField.setText("");
+					} else {
+						JOptionPane.showMessageDialog(null,
+								"Please Check Agree", "Before Move on",
+								JOptionPane.INFORMATION_MESSAGE);
+					}
+
+				} else {
+					JOptionPane.showMessageDialog(null,
+							"Please Fill out your information",
+							"Before Move on", JOptionPane.INFORMATION_MESSAGE);
+				}
 			}
 		});
+		
+		UploadButton = new JButton("Upload Picture");
+		UploadButton.addActionListener(new ActionListener() {
+			private RenderedImage image;
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JFileChooser myFile = new JFileChooser();
+				myFile.setCurrentDirectory(new File("src/pp"));
+
+				final int returnVal = myFile.showSaveDialog(null);
+				if (returnVal == JFileChooser.APPROVE_OPTION) {
+
+				}
+			}
+		});
+
 
 		submitPanel = new JPanel(new GridLayout(1, 3));
 
 		submitPanel.add(agree);
 		submitPanel.add(agreeLabel);
+		submitPanel.add(UploadButton);
 		submitPanel.add(submit);
 		// you may need to add the upload picture thing in the submitPanel
-		//-------------------------------------------------------------------------
-		
-		//-------------------------------------------------------------------------
-		
+		// -------------------------------------------------------------------------
+
+		// -------------------------------------------------------------------------
+
 		// set the size of submitPanel
-		submitPanel.setPreferredSize(new Dimension(300, 50));
+		submitPanel.setPreferredSize(new Dimension(500, 50));
 		// set the size of inforPanel
 		infor.setPreferredSize(new Dimension(740, 250));
 

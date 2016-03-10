@@ -42,8 +42,7 @@ public class JudgePanel extends JPanel
 		});
 		setLayout(null);
 		
-		FileReader file = new FileReader("C:\\Users\\shawn\\workspace\\360Project-master"
-				+ "\\360\\src\\project\\infor.txt");
+		FileReader file = new FileReader("src\\project\\infor.txt");
         BufferedReader reader = new BufferedReader(file);
         
         //counts how many lines we have which determinants number if contestants
