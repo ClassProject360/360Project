@@ -90,7 +90,7 @@ public class Admin extends JPanel implements ListSelectionListener {
 		useerInforAea.setLineWrap(true);
 		
 		// display picture -------------------------------------
-		ImageIcon imageIcon = new ImageIcon("src/image/1.png");
+		ImageIcon imageIcon = new ImageIcon("src/image/1image.png");
 		Image image = imageIcon.getImage(); // transform it
 		Image newimg = image.getScaledInstance(450, 300,
 				java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
