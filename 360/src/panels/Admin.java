@@ -83,7 +83,7 @@ public class Admin extends JPanel implements ListSelectionListener {
 		userInforPane = new JPanel();
 		
 		// display user information----------------------------------
-		useerInforAea = new JTextArea(10, 5);
+		useerInforAea = new JTextArea(6, 6);
 		useerInforAea.setFont(font1);
 		useerInforAea.setPreferredSize(new Dimension(570, 70));
 		useerInforAea.setEditable(false);
@@ -92,7 +92,7 @@ public class Admin extends JPanel implements ListSelectionListener {
 		// display picture -------------------------------------
 		ImageIcon imageIcon = new ImageIcon("src/image/1.png");
 		Image image = imageIcon.getImage(); // transform it
-		Image newimg = image.getScaledInstance(300, 200,
+		Image newimg = image.getScaledInstance(450, 300,
 				java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		imageIcon = new ImageIcon(newimg); // transform it back
 		userPictureLabel = new JLabel(imageIcon);		
