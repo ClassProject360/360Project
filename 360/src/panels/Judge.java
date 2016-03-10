@@ -1,5 +1,4 @@
 package panels;
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,16 +20,26 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 @SuppressWarnings("serial") //Not implementing serialization suppressing warning.
-public class Judge extends JPanel 
+public class JudgePanel extends JPanel 
 {
-	public Judge(int width, int height, JButton logout) throws IOException 
+	public JudgePanel(int width, int height) throws IOException 
 	{
 		setBackground(Color.BLUE);
-		
+		JButton logoutButton = new JButton("Log Out");
+		logoutButton.setBounds(361, 24, 117, 37);
+		logoutButton.setHorizontalAlignment(SwingConstants.LEFT);
 		ButtonGroup buttonGroup = null;
 		DefaultListModel listModel;
 		
-		;
+		
+		logoutButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//getContentPane().removeAll();
+				//getContentPane().add(about(), BorderLayout.CENTER);
+				//getContentPane().add(buttonPanel, BorderLayout.NORTH);
+				//printAll(getGraphics());
+			}
+		});
 		setLayout(null);
 		
 		FileReader file = new FileReader("C:\\Users\\shawn\\workspace\\360Project-master"
@@ -57,8 +66,8 @@ public class Judge extends JPanel
 		//CODE FOR LIST HERE
 	
 		
-		add(logout, BorderLayout.NORTH);
 		
+		add(logoutButton);
 		
 		
 		JRadioButton ratingOne = new JRadioButton("1");
@@ -138,6 +147,5 @@ public class Judge extends JPanel
 		JPanel picturePanel = new JPanel();
 		picturePanel.setBounds(281, 111, 497, 318);
 		add(picturePanel);
-		
 	}
 }
