@@ -11,6 +11,9 @@ import javax.swing.JPanel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
+
+import project.registerInfor;
+
 import javax.swing.JRadioButton;
 import javax.swing.ListSelectionModel;
 import javax.swing.AbstractButton;
@@ -23,6 +26,7 @@ import java.awt.Font;
 @SuppressWarnings("serial") //Not implementing serialization suppressing warning.
 public class Judge extends JPanel 
 {
+	int numOfLines;
 	public Judge(int width, int height, JButton logout) throws IOException 
 	{
 		setBackground(Color.BLUE);
@@ -31,13 +35,22 @@ public class Judge extends JPanel
 		DefaultListModel listModel;
 		
 		;
-		setLayout(null);
+		setLayout(null);	
 		
-		FileReader file = new FileReader("src\\project\\infor.txt");
-        BufferedReader reader = new BufferedReader(file);
+		registerInfor regis = new registerInfor();
+		try {
+			numOfLines = regis.numofline();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
+		
+		//FileReader file = new FileReader("src\\project\\infor.txt");
+        //BufferedReader reader = new BufferedReader(file);
         
         //counts how many lines we have which determinants number if contestants
-        int numOfLines = (int) reader.lines().count();
+        //int numOfLines = (int) reader.lines().count();
 
         listModel = new DefaultListModel();
      
