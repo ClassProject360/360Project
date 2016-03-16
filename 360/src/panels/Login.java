@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
@@ -84,12 +83,7 @@ public class Login extends JPanel {
 					
 					// switch to the judge panel
 					removeAll();
-					try {
-						add(judge(),BorderLayout.CENTER);
-					} catch (IOException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
+					add(judge(),BorderLayout.CENTER);
 					updateUI();
 				} else if (userText.getText().equals(admin) 
 						&& new String(passwordText.getPassword()).equals(adminPassword)) {
@@ -118,9 +112,8 @@ public class Login extends JPanel {
 	/**
 	 * Judge panel that access after pass the login process. 
 	 * @return judge panel
-	 * @throws IOException 
 	 */
-	private JPanel judge() throws IOException {
+	private JPanel judge() {
 		Judge judgePanel = new Judge(myWidth, myHeight, myLogout);
 		return judgePanel;
 	}

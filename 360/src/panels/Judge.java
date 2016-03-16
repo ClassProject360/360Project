@@ -1,155 +1,154 @@
+/*
+ * 
+ */
 package panels;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.Enumeration;
-import javax.swing.JPanel;
+
+import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import project.registerInfor;
 
-import javax.swing.JRadioButton;
-import javax.swing.ListSelectionModel;
-import javax.swing.AbstractButton;
-import javax.swing.ButtonGroup;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import java.awt.Font;
-
+/**
+ * 
+ *
+ */
 @SuppressWarnings("serial") //Not implementing serialization suppressing warning.
-public class Judge extends JPanel 
-{
-	int numOfLines;
-	public Judge(int width, int height, JButton logout) throws IOException 
-	{
-		setBackground(Color.BLUE);
+public class Judge extends JPanel implements ListSelectionListener {
+	private int line;	
+	private JList<String> idList;
+	private JPanel userInforPane;
+	private DefaultListModel<String> userId;
+	private JScrollPane idScrollPane;
+	private JSplitPane splitPane;
+	private registerInfor regis;
+	private JLabel userPictureLabel;
+	private JPanel scorePanel;
+	private JTextField scoreTextField;
+	private JButton submitButton;
+
+	public Judge(int width, int height, JButton logout) {
+		setBackground(Color.PINK.darker().darker());
+		Font font1 = new Font("SansSerif", Font.BOLD, 20);
 		
-		ButtonGroup buttonGroup = null;
-		DefaultListModel listModel;
-		
-		;
-		setLayout(null);	
-		
-		registerInfor regis = new registerInfor();
+		// check the number of user
+		regis = new registerInfor();
 		try {
-			numOfLines = regis.numofline();
+			line = regis.numofline();
 		} catch (IOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
+		// List of User id
+		userId = new DefaultListModel<String>();
 		
-		//FileReader file = new FileReader("src\\project\\infor.txt");
-        //BufferedReader reader = new BufferedReader(file);
-        
-        //counts how many lines we have which determinants number if contestants
-        //int numOfLines = (int) reader.lines().count();
+		// Add user id to the list
+		for(int i=0; i < line; i++){
+			userId.addElement(" ID: " + (i+1) + " ");
+		}
+		
+		//add id data to the list--------------------------------------------------
+		idList = new JList<String>(userId);
+		idList.setFont(font1);
+		idList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		idList.setSelectedIndex(0);
+		idList.addListSelectionListener(this);
+		
+		// add JList to the ScrollPane
+		idScrollPane = new JScrollPane(idList);
+		
+		
+		// user information and picture
+		userInforPane = new JPanel();
+		
+		// display picture -------------------------------------
+		ImageIcon imageIcon = new ImageIcon("src/image/1.png");
+		Image image = imageIcon.getImage(); // transform it
+		Image newimg = image.getScaledInstance(600, 400,
+				java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+		imageIcon = new ImageIcon(newimg); // transform it back
+		userPictureLabel = new JLabel(imageIcon);		
+		
+		// add component to userInforPane panel----------------------------------------------
+		userInforPane.add(userPictureLabel, BorderLayout.CENTER);
+		userInforPane.setBackground(Color.GRAY);
+		
+		// display score information----------------------------------
+		scorePanel = new JPanel();
+		scoreTextField = new JTextField();
+		scoreTextField.setPreferredSize(new Dimension(100, 35));
+		scoreTextField.setFont(font1);
+		scorePanel.add(scoreTextField, BorderLayout.SOUTH);
+			
+		submitButton = new JButton("Submit");
 
-        listModel = new DefaultListModel();
-     
-        for(int i = 0; i < numOfLines; i ++)
-        {
-            listModel.addElement(i+1);
-        }
-        
-		JList list = new JList(listModel);
-		
-		list.setBounds(22, 140, 215, 350);
-		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		
-		add(list);
-		
-		//CODE FOR LIST HERE
-	
-		
-		add(logout, BorderLayout.NORTH);
-		
-		
-		
-		JRadioButton ratingOne = new JRadioButton("1");
-		ratingOne.setBounds(281, 452, 51, 37);
-		add(ratingOne);
-		
-		JRadioButton ratingTwo = new JRadioButton("2");
-		ratingTwo.setBounds(346, 452, 51, 37);
-		add(ratingTwo);
-		
-		JRadioButton ratingThree = new JRadioButton("3");
-		ratingThree.setBounds(411, 452, 51, 37);
-		add(ratingThree);
-		
-		JRadioButton ratingFour = new JRadioButton("4");
-		ratingFour.setBounds(476, 452, 51, 37);
-		add(ratingFour);
-		
-		JRadioButton ratingFive = new JRadioButton("5");
-		ratingFive.setBounds(541, 452, 51, 37);
-		add(ratingFive);
-		
-		
-		//ADDING BUTTONS TO GROUP SO WE ONLY CAN SELECT 1 OF THE 5
-		buttonGroup = new ButtonGroup();
-		
-		buttonGroup.add(ratingOne);
-		buttonGroup.add(ratingTwo);
-		buttonGroup.add(ratingThree);
-		buttonGroup.add(ratingFour);
-		buttonGroup.add(ratingFive);
-		
-		ButtonGroup mybutton = buttonGroup;
-		
-		JButton submitButton = new JButton("Submit");
 		submitButton.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				if(mybutton.isSelected(null))
+				if(scoreTextField.getText().equals(""))
 				{
-					submitButton.setEnabled(false);
-				}
-				else
-				{
-					//need to fix bug if i forget to select a rating it locks the submit button
-					
-					submitButton.setEnabled(true);
-					Enumeration<AbstractButton> bg = mybutton.getElements();
-					while(bg.hasMoreElements())
-					{
-					JRadioButton jrd = (JRadioButton) bg.nextElement();
-						if(jrd.isSelected())
-						{
-						      JOptionPane.showMessageDialog(null, "You Gave this picture a " + jrd.getText() + "/5");
-						}
-					}
-					int index = list.getSelectedIndex();
-				    if (index != -1) 
-				    {
-				        listModel.remove(index);	
-				    }
+					JOptionPane.showMessageDialog (null,
+							 "Please select the score!! ",
+							 "Before Move on", JOptionPane.INFORMATION_MESSAGE);
+				}else{
+					scoreTextField.setText("");
+					System.out.println("Score: " + scoreTextField.getText() );
 				}
 				
 			}
 		});
+
+		scorePanel.add(submitButton);
+		userInforPane.add(scorePanel, BorderLayout.SOUTH);
 		
-		submitButton.setBounds(623, 452, 155, 37);
-		add(submitButton);
+		//split Panel--------------------------------------------------------------------------
+		splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, idScrollPane,
+				userInforPane);
+		splitPane.setOneTouchExpandable(true);
+        splitPane.setDividerLocation(150);
+        splitPane.setPreferredSize(new Dimension(800, 480));
+       
+        //Check if there is a data or not -------------------------------------------
+        if (line == 0){
+        	submitButton.setEnabled(false);
+        	scoreTextField.setEnabled(false);
+        }else {
+        	//useerInforAea.setText(regis.readfromLine(0));
+        	updateLabel(userId.elementAt(idList.getSelectedIndex()));
+        }
+        
+		add(splitPane);
+		add(logout, BorderLayout.SOUTH);
+	}
+	private void updateLabel(String elementAt) {
+		// TODO Auto-generated method stub
 		
-		JLabel lblIdNumber = new JLabel("ID Number");
-		lblIdNumber.setFont(new Font("Tahoma", Font.BOLD, 24));
-		lblIdNumber.setBackground(Color.WHITE);
-		lblIdNumber.setBounds(64, 87, 155, 29);
-		add(lblIdNumber);
-		
-		JPanel picturePanel = new JPanel();
-		picturePanel.setBounds(281, 111, 497, 318);
-		add(picturePanel);
-		
+	}
+	/**
+	 * change the user information in the JTextArea when judge click select on id
+	 */
+	public void valueChanged(ListSelectionEvent e) {     
+		//useerInforAea.setText(regis.readfromLine(idList.getSelectedIndex()));
 	}
 }

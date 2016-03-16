@@ -37,7 +37,7 @@ public class Download extends JPanel {
 		
 		GridBagConstraints c = new GridBagConstraints();
 
-		ImageIcon imageIcon = new ImageIcon("src/image/1image.png");
+		ImageIcon imageIcon = new ImageIcon("src/image/1.png");
 		Image image = imageIcon.getImage(); // transform it
 		Image newimg = image.getScaledInstance(300, 200,
 				java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
@@ -57,7 +57,7 @@ public class Download extends JPanel {
 			}
 		});
 
-		ImageIcon imageIcon2 = new ImageIcon("src/image/2image.png");
+		ImageIcon imageIcon2 = new ImageIcon("src/image/2.png");
 		Image image22 = imageIcon2.getImage(); // transform it
 		Image newimg2 = image22.getScaledInstance(300, 200,
 				java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
@@ -77,7 +77,7 @@ public class Download extends JPanel {
 			}
 		});
 
-		ImageIcon imageIcon3 = new ImageIcon("src/image/3image.png");
+		ImageIcon imageIcon3 = new ImageIcon("src/image/3.png");
 		Image image23 = imageIcon3.getImage(); // transform it
 		Image newimg3 = image23.getScaledInstance(300, 200,
 				java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
@@ -97,7 +97,7 @@ public class Download extends JPanel {
 			}
 		});
 
-		ImageIcon imageIcon4 = new ImageIcon("src/image/4image.png");
+		ImageIcon imageIcon4 = new ImageIcon("src/image/4.png");
 		Image image24 = imageIcon4.getImage(); // transform it
 		Image newimg4 = image24.getScaledInstance(300, 200,
 				java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
