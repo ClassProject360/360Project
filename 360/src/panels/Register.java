@@ -67,6 +67,7 @@ public class Register extends JPanel {
 	private JTextField phoneTextField;
 	private JTextField emailTextField;
 	private JCheckBox agree;
+	private File uploadImage;
 	
 //	private PixelImage myImage;
 	
@@ -270,7 +271,7 @@ public class Register extends JPanel {
 		
 		// display the upload image
 		dispicPanel = new JPanel();
-		image1 = new JLabel("Plese Upload Picture");
+		image1 = new JLabel("Please Upload Picture");
 		image1.setPreferredSize(new Dimension(360, 290));
 		
 		// upload picture
@@ -285,6 +286,7 @@ public class Register extends JPanel {
 				if (returnVal == JFileChooser.APPROVE_OPTION) {
 					try {
 						File file = myFile.getSelectedFile();
+						uploadImage = myFile.getSelectedFile();
 			            BufferedImage bi = ImageIO.read(file);
 						ImageIcon imageIcon = new ImageIcon(bi);
 						Image image = imageIcon.getImage(); // transform it
@@ -350,7 +352,7 @@ public class Register extends JPanel {
 						stateTextField.getText(),
 						zipTextField.getText(),
 						phoneTextField.getText(),
-						emailTextField.getText());
+						emailTextField.getText(), uploadImage);
 				nameTextField.setText("");
 				latNameTextField.setText("");
 				ageTextField.setText("");

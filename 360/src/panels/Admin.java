@@ -41,6 +41,7 @@ public class Admin extends JPanel implements ListSelectionListener {
 	private registerInfor regis;
 	private JLabel userPictureLabel;
 	private JTextArea useerInforAea;
+	private String imgPath = "../360/submissions/ID_";
 	/**
 	 * Constructor that creates the About main panel seen upon logging into the program.
 	 * 
@@ -90,12 +91,25 @@ public class Admin extends JPanel implements ListSelectionListener {
 		useerInforAea.setLineWrap(true);
 		
 		// display picture -------------------------------------
-		ImageIcon imageIcon = new ImageIcon("src/image/1.png");
+		ImageIcon imageIcon = new ImageIcon(imgPath + (idList.getSelectedIndex()+1)+ ".png");
 		Image image = imageIcon.getImage(); // transform it
 		Image newimg = image.getScaledInstance(450, 300,
 				java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		imageIcon = new ImageIcon(newimg); // transform it back
-		userPictureLabel = new JLabel(imageIcon);		
+		userPictureLabel = new JLabel(imageIcon);	
+		
+		idList.addListSelectionListener(new ListSelectionListener(){
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				ImageIcon temp1 = new ImageIcon(imgPath + (idList.getSelectedIndex()+1)+ ".png");
+				Image temp2 = temp1.getImage(); // transform it
+				Image temp3 = temp2.getScaledInstance(450, 300,
+						java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+				temp1.setImage(temp3);
+				userPictureLabel.setIcon(temp1);
+				userPictureLabel.updateUI();
+			}
+		});
 		
 		// add component to userInforPane panel----------------------------------------------
 		userInforPane.add(userPictureLabel, BorderLayout.CENTER);

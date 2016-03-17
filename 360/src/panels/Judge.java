@@ -45,6 +45,7 @@ public class Judge extends JPanel implements ListSelectionListener {
 	private JPanel scorePanel;
 	private JTextField scoreTextField;
 	private JButton submitButton;
+	private String imgPath = "../360/submissions/ID_";
 
 	public Judge(int width, int height, JButton logout) {
 		setBackground(Color.PINK.darker().darker());
@@ -82,12 +83,25 @@ public class Judge extends JPanel implements ListSelectionListener {
 		userInforPane = new JPanel();
 		
 		// display picture -------------------------------------
-		ImageIcon imageIcon = new ImageIcon("src/image/1.png");
+		ImageIcon imageIcon = new ImageIcon(imgPath + (idList.getSelectedIndex()+1)+ ".png");
 		Image image = imageIcon.getImage(); // transform it
 		Image newimg = image.getScaledInstance(600, 400,
 				java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
 		imageIcon = new ImageIcon(newimg); // transform it back
-		userPictureLabel = new JLabel(imageIcon);		
+		userPictureLabel = new JLabel(imageIcon);
+		
+		idList.addListSelectionListener(new ListSelectionListener(){
+			@Override
+			public void valueChanged(ListSelectionEvent arg0) {
+				ImageIcon temp1 = new ImageIcon(imgPath + (idList.getSelectedIndex()+1)+ ".png");
+				Image temp2 = temp1.getImage(); // transform it
+				Image temp3 = temp2.getScaledInstance(600, 400,
+						java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
+				temp1.setImage(temp3);
+				userPictureLabel.setIcon(temp1);
+				userPictureLabel.updateUI();
+			}
+		});
 		
 		// add component to userInforPane panel----------------------------------------------
 		userInforPane.add(userPictureLabel, BorderLayout.CENTER);

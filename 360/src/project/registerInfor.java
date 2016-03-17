@@ -4,8 +4,10 @@ import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
@@ -14,9 +16,10 @@ public class registerInfor {
 	
 	private int id;
 	private String fileName;
+	private String imgPath = "../360/submissions/";
 	
 	public registerInfor(){
-		fileName = "src/project/infor.txt";
+		fileName = "../360/submissions/infor.txt";
 	}
 	
 	/**
@@ -34,7 +37,7 @@ public class registerInfor {
 	 * @param email
 	 */
 	public void cusInfor(String name, String lastName, String age, String sex, 
-			String address, String city, String state, String zip, String phone, String email){
+			String address, String city, String state, String zip, String phone, String email, File image){
 		
 		try {
 			if(numofline() == 0){
@@ -64,6 +67,32 @@ public class registerInfor {
 		    		+ " " + state + " " + zip
 		    		+ "   Phone: " + phone + "   Email: " + email + "\n");
 		    bufferedWriter.close();
+		    
+		    /* Code snippet through finally found on Stack Overflow modified for use
+		     *  in our project giving credit where credit is due.
+		     *  URL: http://stackoverflow.com/questions/106770/standard-concise-way-to-copy-a-file-in-java
+		     */
+		    File destFile = new File(imgPath + "ID_" + id + ".png");
+		    if(!destFile.exists()) {
+		        destFile.createNewFile();
+		    }
+
+		    FileChannel source = null;
+		    FileChannel destination = null;
+
+		    try {
+		        source = new FileInputStream(image).getChannel();
+		        destination = new FileOutputStream(destFile).getChannel();
+		        destination.transferFrom(source, 0, source.size());
+		    }
+		    finally {
+		        if(source != null) {
+		            source.close();
+		        }
+		        if(destination != null) {
+		            destination.close();
+		        }
+		    }
 
 		} catch(IOException e) {
 		    System.out.println("COULD NOT OPEN FILE!!");
