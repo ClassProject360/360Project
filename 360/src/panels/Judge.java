@@ -58,16 +58,21 @@ public class Judge extends JPanel implements ListSelectionListener {
 		// check the number of user
 		regis = new registerInfor();
 		try {
-			String temp = regis.getFile();
-			data.append(temp);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			line = regis.numofline();
 		} catch (IOException e1) {
 			e1.printStackTrace();
+		}
+		if(line > 0){
+			
+			try {
+				String temp = regis.getFile();
+				data.append(temp);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else {
+			data.append("No data");
 		}
 		
 		// List of User id
@@ -100,11 +105,14 @@ public class Judge extends JPanel implements ListSelectionListener {
 		
 		// display picture -------------------------------------
 		ImageIcon imageIcon;
-		if(userId.firstElement() == ""){
+		if(line == 0){
+			imageIcon = new ImageIcon("");
+		}
+		else if(userId.firstElement() == ""){
 			imageIcon = new ImageIcon(imgPath+ "1.png");
-		} else
-			System.out.println(idList.getSelectedValue());
+		} else {
 			imageIcon = new ImageIcon(imgPath + idList.getSelectedValue().charAt(5)+ ".png");
+		}
 		Image image = imageIcon.getImage(); // transform it
 		Image newimg = image.getScaledInstance(600, 400,
 				java.awt.Image.SCALE_SMOOTH); // scale it the smooth way
@@ -132,10 +140,11 @@ public class Judge extends JPanel implements ListSelectionListener {
 		
 		// display score information----------------------------------
 		scorePanel = new JPanel();
+		scorePanel.setPreferredSize(new Dimension(180, 50));
 		
 		scoreSpinner = new SpinnerNumberModel(1,1,10,1);
-		spinner = new JSpinner(scoreSpinner);
 		
+		spinner = new JSpinner(scoreSpinner);
 		scorePanel.add(spinner, BorderLayout.SOUTH);
 			
 		submitButton = new JButton("Submit");
