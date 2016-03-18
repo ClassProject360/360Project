@@ -10,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -29,6 +30,7 @@ public class ViewFrame extends JFrame {
 	private JButton faq;
 	private JButton login;
 	private JButton logout;
+	private ImageIcon icon = new ImageIcon(Main.class.getResource("/image/crayon.png"));
 
 	// width and height of JFrame
 	private int height = 600;
@@ -40,6 +42,7 @@ public class ViewFrame extends JFrame {
 	public ViewFrame(){
 		super("Welcome to B#'s Coloring Contest", null);
 		setSize(width, height);
+		setIconImage(icon.getImage());
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		setLocationRelativeTo(null);
