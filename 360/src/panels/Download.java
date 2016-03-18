@@ -1,5 +1,6 @@
 /**
- * 
+ * To download the picture
+ * Author: Nick Manachaichana
  */
 package panels;
 
@@ -17,8 +18,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
- * 
- *
+ * Set up component.
  */
 @SuppressWarnings("serial") //Not implementing serialization suppressing warning.
 public class Download extends JPanel {
@@ -37,6 +37,7 @@ public class Download extends JPanel {
 		
 		GridBagConstraints c = new GridBagConstraints();
 
+		// 1 picture for age under 7 yesrs old
 		ImageIcon imageIcon = new ImageIcon("src/image/1.png");
 		Image image = imageIcon.getImage(); // transform it
 		Image newimg = image.getScaledInstance(300, 200,
@@ -57,6 +58,7 @@ public class Download extends JPanel {
 			}
 		});
 
+		// 2 picture for ages from 8 to 15 years old
 		ImageIcon imageIcon2 = new ImageIcon("src/image/2.png");
 		Image image22 = imageIcon2.getImage(); // transform it
 		Image newimg2 = image22.getScaledInstance(300, 200,
@@ -77,6 +79,7 @@ public class Download extends JPanel {
 			}
 		});
 
+		// 3 picture for age 16 to 30 years old
 		ImageIcon imageIcon3 = new ImageIcon("src/image/3.png");
 		Image image23 = imageIcon3.getImage(); // transform it
 		Image newimg3 = image23.getScaledInstance(300, 200,
@@ -97,6 +100,7 @@ public class Download extends JPanel {
 			}
 		});
 
+		// 4 picture for age 31 years old and up
 		ImageIcon imageIcon4 = new ImageIcon("src/image/4.png");
 		Image image24 = imageIcon4.getImage(); // transform it
 		Image newimg4 = image24.getScaledInstance(300, 200,

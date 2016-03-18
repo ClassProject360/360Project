@@ -1,5 +1,6 @@
-/*
- * 
+/**
+ * For Judge to give a score to each picture
+ * Author: Shawn Massoud, Nick Manachaichana, Chris Kubec
  */
 package panels;
 
@@ -28,8 +29,7 @@ import javax.swing.event.ListSelectionListener;
 import project.registerInfor;
 
 /**
- * 
- *
+ * Set up component.
  */
 @SuppressWarnings("serial") //Not implementing serialization suppressing warning.
 public class Judge extends JPanel implements ListSelectionListener {
@@ -99,6 +99,7 @@ public class Judge extends JPanel implements ListSelectionListener {
 		if(userId.firstElement() == ""){
 			imageIcon = new ImageIcon(imgPath+ "1.png");
 		} else
+			System.out.println(idList.getSelectedValue());
 			imageIcon = new ImageIcon(imgPath + idList.getSelectedValue().charAt(5)+ ".png");
 		Image image = imageIcon.getImage(); // transform it
 		Image newimg = image.getScaledInstance(600, 400,
@@ -200,7 +201,7 @@ public class Judge extends JPanel implements ListSelectionListener {
 	/**
 	 * change the user information in the JTextArea when judge click select on id
 	 */
-	public void valueChanged(ListSelectionEvent e) {     
-		//useerInforAea.setText(regis.readfromLine(idList.getSelectedIndex()));
+	public void valueChanged(ListSelectionEvent e) {
+		
 	}
 }

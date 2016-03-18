@@ -1,5 +1,6 @@
-/* 
- * 
+/** 
+ * Main page that display information of this program
+ * Author: Richard Ung.
  */
 package panels;
 

@@ -1,5 +1,6 @@
-/* 
- * 
+/** 
+ * Admin page. for admin to read every user information and also score so that admin can announce the winer
+ * Author: Nick Manachaichana
  */
 package panels;
 
@@ -27,8 +28,7 @@ import javax.swing.event.ListSelectionListener;
 import project.registerInfor;
 
 /**
- * 
- *
+ * Set up component.
  */
 @SuppressWarnings("serial") //Not implementing serialization suppressing warning.
 public class Admin extends JPanel implements ListSelectionListener {
@@ -140,6 +140,7 @@ public class Admin extends JPanel implements ListSelectionListener {
 		south.add(info);
 		add(south, BorderLayout.SOUTH);
 	}
+	
 	private void updateLabel(String elementAt) {
 		// TODO Auto-generated method stub
 		

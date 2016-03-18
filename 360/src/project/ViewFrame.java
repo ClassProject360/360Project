@@ -1,5 +1,6 @@
 /**
- * 
+ * The main GUI class that call each panel.
+ * Author: Nick Manachaichana, Chris Kubec
  */
 
 package project;
@@ -171,6 +172,9 @@ public class ViewFrame extends JFrame {
 		return loginPanel;
 	}
 	
+	/**
+	 * remove the buttompPanel when judge and admin login
+	 */
 	public void removeButtonMenu(){
 			remove(buttonPanel);
 	}

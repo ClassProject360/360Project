@@ -1,5 +1,6 @@
 /**
- * 
+ * To login to judge or admin page
+ * Author: Nick Manachaichana, Chris Kubec
  */
 
 package panels;
@@ -20,8 +21,7 @@ import javax.swing.JTextField;
 import project.ViewFrame;
 
 /**
- * 
- *
+ * Set up component.
  */
 @SuppressWarnings("serial") //Not implementing serialization suppressing warning.
 public class Login extends JPanel {

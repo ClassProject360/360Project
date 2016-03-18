@@ -1,3 +1,7 @@
+/**
+ * To write and read information of customer, read specific line and read how may user or line.   
+ * @author Nick manachaichana, Chris Kubec
+ */
 package project;
 
 import java.io.BufferedInputStream;
@@ -152,6 +156,11 @@ public class registerInfor {
 		return line;
 	}
 	
+	/**
+	 * Update the data to the file
+	 * @param data
+	 * @throws IOException
+	 */
 	public void updateData(String data) throws IOException{
 		File out = new File(fileName);
 		FileWriter fileW = new FileWriter(out, false);

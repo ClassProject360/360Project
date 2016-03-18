@@ -1,5 +1,6 @@
 /**
- * 
+ * To get user information and picture
+ * Author: Nick Manachaichana, Chris Kubec
  */
 package panels;
 
@@ -30,8 +31,7 @@ import javax.swing.JTextField;
 import project.registerInfor;
 
 /**
- * 
- *
+ * Set up component.
  */
 @SuppressWarnings("serial")
 // Not implementing serialization suppressing warning.

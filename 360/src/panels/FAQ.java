@@ -1,5 +1,6 @@
 /**
- * 
+ * To show FAQ
+ * Author: Joan Jones
  */
 package panels;
 
@@ -9,8 +10,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 /**
- * 
- *
+ * Set up component.
  */
 @SuppressWarnings("serial") //Not implementing serialization suppressing warning.
 public class FAQ extends JPanel {
