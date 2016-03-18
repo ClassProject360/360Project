@@ -1,3 +1,4 @@
 ID: 1   Name: 1 1   Age: 1   Sex: 1   Address: 1 1 1 1   Phone: 1   Email: 1 Score1: 6
-ID: 2   Name: Ron Swanson   Age: 55   Sex: M   Address: 15th Pawne St Pawne WA 51891   Phone: 1345551234   Email: rSwanson@gmail.com Score2: 0
+ID: 2   Name: Ron Swanson   Age: 55   Sex: M   Address: 15th Pawne St Pawne WA 51891   Phone: 1345551234   Email: rSwanson@gmail.com Score2: 3
 ID: 3   Name: Lady Beatrix   Age: 16   Sex: F   Address: 3rd St Oklahoma City OK 48117   Phone: 7895551234   Email: LBeat@hotmail.com Score3: 4
+ID: 4   Name: Michael Scott   Age: 44   Sex: M   Address: 19th st Scranton NJ 96467   Phone: 1115551234   Email: mScott@paper.net Score4: 0
