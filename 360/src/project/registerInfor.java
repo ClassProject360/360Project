@@ -15,16 +15,19 @@ import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.CodeSource;
 import java.util.Scanner;
 
 public class registerInfor {
 	
 	private int id;
 	private String fileName;
-	private String imgPath = "../360/submissions/";
+	CodeSource source;
+	private String imgPath = "./submissions/";
 	
 	public registerInfor(){
-		fileName = "../360/submissions/infor.txt";
+		fileName = "./submissions/infor.txt";
+		source = getClass().getProtectionDomain().getCodeSource();
 	}
 	
 	/**
@@ -44,24 +47,32 @@ public class registerInfor {
 	public void cusInfor(String name, String lastName, String age, String sex, 
 			String address, String city, String state, String zip, String phone, String email, File image){
 		
-		try {
+		// write information to file infor.txt
+		File log = new File(fileName);
+		
+
+		try{
+		    if(!log.exists()){
+		    	log.getParentFile().mkdir();
+		        log.createNewFile();
+		        FileWriter fileWriter = new FileWriter(log);
+		        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+		        bufferedWriter.write("");
+		        bufferedWriter.close();
+		    }
+		
+		    try {
+			System.out.println("WALNUT");
 			if(numofline() == 0){
+				System.out.println("HERES");
 				id =1;
 			} else {
+				System.out.println("SAYS");
 				id = numofline() + 1;
 			}
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
-		
-		// write information to file infor.txt
-		File log = new File(fileName);
-
-		try{
-		    if(!log.exists()){
-		       // System.out.println("We had to make a new file.");
-		        log.createNewFile();
-		    }
 
 		    FileWriter fileWriter = new FileWriter(log, true);
 

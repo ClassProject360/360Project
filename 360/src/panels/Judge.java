@@ -48,7 +48,7 @@ public class Judge extends JPanel implements ListSelectionListener {
 	private SpinnerNumberModel scoreSpinner;
 	
 	private JButton submitButton;
-	private String imgPath = "../360/submissions/ID_";
+	private String imgPath = "./submissions/ID_";
 	private StringBuilder data = new StringBuilder();
 
 	public Judge(int width, int height, JButton logout) {

@@ -42,7 +42,7 @@ public class Admin extends JPanel implements ListSelectionListener {
 	private registerInfor regis;
 	private JLabel userPictureLabel;
 	private JTextArea useerInforAea;
-	private String imgPath = "../360/submissions/ID_";
+	private String imgPath = "./submissions/ID_";
 	/**
 	 * Constructor that creates the About main panel seen upon logging into the program.
 	 * 

@@ -1,0 +1,2 @@
+ID: 1   Name: Ron Swanson   Age: 55   Sex: M   Address: 13th Pawnee St Pawnee Indiana 51913   Phone: 2065551234   Email: rSwanson@gmail.com Score1: 0
+ID: 2   Name: Tina Fey   Age: 46   Sex: F   Address: 5th Ave New York NY 11111   Phone: 425 555 5555   Email: tFey@30rock.com Score2: 8
