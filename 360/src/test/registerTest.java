@@ -1,3 +1,8 @@
+/**
+ * Testing class for backend logic.
+ * 
+ * Author: Nick Manachaichana
+ */
 package test;
 
 import java.io.IOException;

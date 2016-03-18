@@ -10,7 +10,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Image;
 import java.io.IOException;
-
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,7 +23,6 @@ import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
 import project.registerInfor;
 
 /**
@@ -58,7 +56,6 @@ public class Admin extends JPanel implements ListSelectionListener {
 		try {
 			line = regis.numofline();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
@@ -142,7 +139,7 @@ public class Admin extends JPanel implements ListSelectionListener {
 	}
 	
 	private void updateLabel(String elementAt) {
-		// TODO Auto-generated method stub
+		// Inherited unused method.
 		
 	}
 	/**

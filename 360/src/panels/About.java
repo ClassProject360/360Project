@@ -6,16 +6,13 @@ package panels;
 
 import java.awt.Color;
 import java.awt.Image;
-
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
 import project.Main;
 
 /**
- * 
- *
+ * About Page that opens when the application first opens up.
  */
 @SuppressWarnings("serial") //Not implementing serialization suppressing warning.
 public class About extends JPanel {

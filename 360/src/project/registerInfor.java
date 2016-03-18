@@ -2,6 +2,7 @@
  * To write and read information of customer, read specific line and read how may user or line.   
  * @author Nick manachaichana, Chris Kubec
  */
+
 package project;
 
 import java.io.BufferedInputStream;
@@ -19,7 +20,6 @@ import java.security.CodeSource;
 import java.util.Scanner;
 
 public class registerInfor {
-	
 	private int id;
 	private String fileName;
 	CodeSource source;
@@ -49,30 +49,25 @@ public class registerInfor {
 		
 		// write information to file infor.txt
 		File log = new File(fileName);
-		
 
 		try{
-		    if(!log.exists()){
-		    	log.getParentFile().mkdir();
+			if(!log.exists()){
+				log.getParentFile().mkdir();
 		        log.createNewFile();
 		        FileWriter fileWriter = new FileWriter(log);
 		        BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 		        bufferedWriter.write("");
 		        bufferedWriter.close();
 		    }
-		
-		    try {
-			System.out.println("WALNUT");
-			if(numofline() == 0){
-				System.out.println("HERES");
-				id =1;
-			} else {
-				System.out.println("SAYS");
-				id = numofline() + 1;
-			}
-		} catch (IOException e1) {
+			try {
+				if(numofline() == 0){
+					id =1;
+				} else {
+					id = numofline() + 1;
+				}
+			} catch (IOException e1) {
 			e1.printStackTrace();
-		}
+			}
 
 		    FileWriter fileWriter = new FileWriter(log, true);
 
@@ -114,10 +109,13 @@ public class registerInfor {
 		} catch(IOException e) {
 		    System.out.println("COULD NOT OPEN FILE!!");
 		}
-		
-		
 	}
 	
+	/**
+	 * Gets the file for getting current scored and unscored values in the Judge panel.
+	 * @return Returns the value of the entries from a txt file as a string.
+	 * @throws FileNotFoundException
+	 */
 	public String getFile() throws FileNotFoundException{
 		String fileData = new Scanner(new File(fileName)).useDelimiter("\\A").next();
 		return fileData;

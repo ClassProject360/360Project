@@ -15,7 +15,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -27,7 +26,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-
 import project.registerInfor;
 
 /**
@@ -53,6 +51,7 @@ public class Register extends JPanel {
 	private JLabel emailLabel;
 	private JLabel agreeLabel;
 	private JLabel image1;
+	
 	private JButton submit;
 	private JButton UploadButton;
 
@@ -66,10 +65,9 @@ public class Register extends JPanel {
 	private JTextField zipTextField;
 	private JTextField phoneTextField;
 	private JTextField emailTextField;
+	
 	private JCheckBox agree;
 	private File uploadImage;
-	
-//	private PixelImage myImage;
 	
 	private boolean isUpload;
 
@@ -374,8 +372,6 @@ public class Register extends JPanel {
 			JOptionPane.showMessageDialog(null,
 					"Please Fill out your information",
 					"Before Move on", JOptionPane.INFORMATION_MESSAGE);
-		}
-		
+		}	
 	}
-
 }

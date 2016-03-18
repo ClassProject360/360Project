@@ -119,8 +119,6 @@ public class Judge extends JPanel implements ListSelectionListener {
 		imageIcon = new ImageIcon(newimg); // transform it back
 		userPictureLabel = new JLabel(imageIcon);
 		
-
-		
 		idList.addListSelectionListener(new ListSelectionListener(){
 			@Override
 			public void valueChanged(ListSelectionEvent arg0) {
@@ -198,14 +196,16 @@ public class Judge extends JPanel implements ListSelectionListener {
 		add(splitPane);
 		add(logout, BorderLayout.SOUTH);
 	}
+	
 	private void updateLabel(String elementAt) {
-		// TODO Auto-generated method stub
+		// Unused inherited method.
 		
 	}
+	
 	/**
 	 * change the user information in the JTextArea when judge click select on id
 	 */
 	public void valueChanged(ListSelectionEvent e) {
-		
+		//Unused inherited method.
 	}
 }

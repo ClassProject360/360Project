@@ -54,7 +54,7 @@ public class ViewFrame extends JFrame {
 	/**
 	 * button set up  at the top of the program
 	 */
-	public void buttomset() {
+	private void buttomset() {
 
 		buttonPanel = new JPanel();
 		buttonPanel.setLayout(new BoxLayout(buttonPanel, BoxLayout.X_AXIS));
@@ -142,7 +142,7 @@ public class ViewFrame extends JFrame {
 	 *  download panel that provide picture all the picture to user to download
 	 * @return download panel
 	 */
-	protected JPanel download() {
+	private JPanel download() {
 		Download downPanel = new Download(width, height);
 		return downPanel;
 	}
@@ -151,7 +151,7 @@ public class ViewFrame extends JFrame {
 	 * register panel that correct all user infor and picture.
 	 * @return register panel
 	 */
-	protected JPanel register() {
+	private JPanel register() {
 		Register regisPanel = new Register(width, height);
 		return regisPanel;
 	}
