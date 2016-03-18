@@ -56,7 +56,6 @@ public class Judge extends JPanel implements ListSelectionListener {
 		try {
 			line = regis.numofline();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		

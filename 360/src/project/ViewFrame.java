@@ -7,15 +7,12 @@ package project;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 import panels.About;
-import panels.Admin;
 import panels.Download;
 import panels.FAQ;
 import panels.Login;
@@ -170,8 +167,12 @@ public class ViewFrame extends JFrame {
 	 * @return login panel
 	 */
 	private JPanel logIn() {
-		Login loginPanel = new Login(width, height, logout);
+		Login loginPanel = new Login(width, height, logout, this);
 		return loginPanel;
+	}
+	
+	public void removeButtonMenu(){
+			remove(buttonPanel);
 	}
 	
 }

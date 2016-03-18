@@ -1,7 +1,6 @@
 /**
  * Main Driver class of the program creates the Main GUI class.
  * Author: Nick and Chris.
- * 
  */
 package project;
 

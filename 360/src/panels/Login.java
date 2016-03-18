@@ -8,7 +8,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
@@ -17,7 +16,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-
 import project.ViewFrame;
 
 /**
@@ -27,10 +25,7 @@ import project.ViewFrame;
 @SuppressWarnings("serial") //Not implementing serialization suppressing warning.
 public class Login extends JPanel {
 	//Judge username and password
-	private String judgeName1 = "judgeone";
-	private String judgeName2 = "judgetwo";
-	private String judgeName3 = "judgethree";
-	private String judgeName4 = "judgefour";
+	private String judgeName1 = "judge";
 	private String judgePassword = "1234";
 	
 	// admin username and password
@@ -48,10 +43,11 @@ public class Login extends JPanel {
 	 * @param width
 	 * @param height
 	 */
-	public Login(int width, int height, JButton logout) {
+	public Login(int width, int height, JButton logout, ViewFrame theFrame) {
 		myWidth = width;
 		myHeight = height;
 		myLogout = logout;
+		frame = theFrame;
 		setBackground(Color.RED);
 		
 		Font font2 = new Font("SansSerif", Font.BOLD, 20);
@@ -76,22 +72,19 @@ public class Login extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				// check the user name and password
 				if(userText.getText().equals(judgeName1)
-						||userText.getText().equals(judgeName2)
-						|| userText.getText().equals(judgeName3) 
-						|| userText.getText().equals(judgeName4) 
 						&& new String(passwordText.getPassword()).equals(judgePassword)){
-					
 					// switch to the judge panel
 					removeAll();
 					add(judge(),BorderLayout.CENTER);
 					updateUI();
+					frame.removeButtonMenu();
 				} else if (userText.getText().equals(admin) 
 						&& new String(passwordText.getPassword()).equals(adminPassword)) {
 					// switch to the admin panel
 					removeAll();
-					//frame.getRootPane().removeAll();
 					add(admin(),BorderLayout.CENTER);
 					updateUI();
+					frame.removeButtonMenu();
 				}else {
 					JOptionPane.showMessageDialog (null, "Incorrect Username or Password",
 							 "Warnning", JOptionPane.INFORMATION_MESSAGE);
