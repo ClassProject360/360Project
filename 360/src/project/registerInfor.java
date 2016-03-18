@@ -4,13 +4,14 @@ import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.channels.FileChannel;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-
+import java.util.Scanner;
 
 public class registerInfor {
 	
@@ -65,7 +66,7 @@ public class registerInfor {
 		    		+ "   Age: " + age + "   Sex: " + sex 
 		    		+ "   Address: " + address + " " + city 
 		    		+ " " + state + " " + zip
-		    		+ "   Phone: " + phone + "   Email: " + email + "\n");
+		    		+ "   Phone: " + phone + "   Email: " + email + " Score" + id + ": 0\n");
 		    bufferedWriter.close();
 		    
 		    /* Code snippet through finally found on Stack Overflow modified for use
@@ -73,6 +74,7 @@ public class registerInfor {
 		     *  URL: http://stackoverflow.com/questions/106770/standard-concise-way-to-copy-a-file-in-java
 		     */
 		    File destFile = new File(imgPath + "ID_" + id + ".png");
+		    
 		    if(!destFile.exists()) {
 		        destFile.createNewFile();
 		    }
@@ -101,6 +103,11 @@ public class registerInfor {
 		
 	}
 	
+	public String getFile() throws FileNotFoundException{
+		String fileData = new Scanner(new File(fileName)).useDelimiter("\\A").next();
+		return fileData;
+	}
+	
 	/**
 	 * To count the number of line so that we can assignt an Id to the user
 	 * @return number of line
@@ -127,7 +134,6 @@ public class registerInfor {
 	    } finally {
 	        is.close();
 	    }
-	    
 	}
 	
 	/**
@@ -138,16 +144,20 @@ public class registerInfor {
 	public String readfromLine(int lineNum){
 		String line = null;
 		try {
-			
 			line = Files.readAllLines(Paths.get(fileName)).get(lineNum);
-			//System.out.println(line);
 			return line;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return line;
-		
 	}
 	
+	public void updateData(String data) throws IOException{
+		File out = new File(fileName);
+		FileWriter fileW = new FileWriter(out, false);
+		BufferedWriter bufferedWriter = new BufferedWriter(fileW);
+	    bufferedWriter.write(data);
+	    bufferedWriter.close();
+	}
 
 }

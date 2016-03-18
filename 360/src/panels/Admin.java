@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
@@ -132,7 +133,12 @@ public class Admin extends JPanel implements ListSelectionListener {
         }
         
 		add(splitPane);
-		add(logout, BorderLayout.SOUTH);
+		
+		JTextField info = new JTextField("Any scores that are 0 or zero have not been graded by a judge.");
+		JPanel south = new JPanel();
+		south.add(logout);
+		south.add(info);
+		add(south, BorderLayout.SOUTH);
 	}
 	private void updateLabel(String elementAt) {
 		// TODO Auto-generated method stub

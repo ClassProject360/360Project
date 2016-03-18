@@ -59,7 +59,7 @@ public class ViewFrame extends JFrame {
 		register = new JButton("Register");
 		about = new JButton("About");
 		faq = new JButton("FAQ");
-		login = new JButton("Log In");
+		login = new JButton("Judge / Admin Login");
 		logout = new JButton("Log out");
 
 		buttonPanel.add(Box.createVerticalStrut(5));
