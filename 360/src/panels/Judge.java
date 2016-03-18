@@ -71,7 +71,7 @@ public class Judge extends JPanel implements ListSelectionListener {
 		
 		// Add user id to the list
 		for(int i=0; i < line; i++){
-			if(-1 != data.lastIndexOf("Score" + (i+1) + ": 0"))
+			if(-1 != data.indexOf("Score" + (i+1) + ": 0"))
 				userId.addElement(" ID: " + (i+1) + " ");
 		}
 		if (userId.isEmpty()){
@@ -179,7 +179,6 @@ public class Judge extends JPanel implements ListSelectionListener {
         	submitButton.setEnabled(false);
         	scoreTextField.setEnabled(false);
         }else {
-        	//useerInforAea.setText(regis.readfromLine(0));
         	updateLabel(userId.elementAt(idList.getSelectedIndex()));
         }
         

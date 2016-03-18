@@ -1,6 +1,7 @@
 /**
  * 
  */
+
 package panels;
 
 import java.awt.BorderLayout;
